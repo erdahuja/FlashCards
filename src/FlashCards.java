@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 
 public class FlashCards extends JWindow{
 	public FlashCards() {
-JFrame fc=new JFrame();
+		JFrame fc=new JFrame();
 		ArrayList<FlashCardObject> cardList=new ArrayList<>();
 		fc.setTitle("Flash Cards Reloaded");
 		fc.setBounds(500, 100, 500, 550);
@@ -31,14 +31,14 @@ JFrame fc=new JFrame();
 
 		JTextArea ansArea = new JTextArea();
 		ansArea.setToolTipText("Add Question Here");
-		ansArea.setBounds(90, 67, 330, 150);
+		ansArea.setBounds(90, 70, 330, 100);
 		ansArea.setColumns(30);
 		ansArea.setRows(10);
 		panel.add(ansArea);
 		
 		JTextArea queArea = new JTextArea();
 		queArea.setToolTipText("Add Answer Here ");
-		queArea.setBounds(90, 240, 330, 150);
+		queArea.setBounds(90, 200, 330, 100);
 		queArea.setRows(10);
 		//queArea.setTabSize(5);
 		
@@ -65,14 +65,14 @@ JFrame fc=new JFrame();
 				if(!(que.equals("")||ans.equals( ""))){
 					
 
-					FlashCardObject fco=new FlashCardObject(que+"/",ans+"\n");
+					FlashCardObject fco=new FlashCardObject(que,ans+"\n");
 					cardList.add(fco);
 					System.out.println("Card Added to list......");
 					            		
             	}
 				else
 				{
-					//System.out.println("flag"); 
+					
             		JOptionPane.showMessageDialog(null, "Empty Field", "Error", JOptionPane.ERROR_MESSAGE);
             		
 				}
@@ -95,7 +95,7 @@ JFrame fc=new JFrame();
 		
 		JLabel lblAddAnswer = new JLabel("Add Answer");
 		lblAddAnswer.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAddAnswer.setBounds(120, 221, 189, 15);
+		lblAddAnswer.setBounds(133, 173, 189, 15);
 		panel.add(lblAddAnswer);
 		
 		JButton btnNextCard = new JButton("Next Card");
@@ -106,8 +106,8 @@ JFrame fc=new JFrame();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				String que=queArea.getText()+"/";
-				String ans=ansArea.getText()+"\n";
+				String que=queArea.getText();
+				String ans=ansArea.getText();
 				
 				if(!(que.equals("")||ans.equals( ""))){
 					
@@ -115,6 +115,7 @@ JFrame fc=new JFrame();
 					FlashCardObject fco=new FlashCardObject(que,ans);
 					cardList.add(fco);
 					System.out.println("Card Added to list......");
+					
 					            		
             	}
 				else

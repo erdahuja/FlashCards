@@ -11,36 +11,39 @@ import java.util.ArrayList;
 public class ObjectLogic	
 {
 	static File file=new File("flash.txt");
-	
+static ArrayList<FlashCardObject> cardList=new ArrayList<FlashCardObject>();
 	static FileOutputStream fos=null;
 	static FileInputStream fis=null;
-	
- static void readObject() {
+	static private int index;
+ static ArrayList<FlashCardObject> readObject() throws Exception{
 		
-	 try{
+	 
 			fis=new FileInputStream(file);
 			ObjectInputStream os=new ObjectInputStream(fis);
 			FileReader fileReader=new FileReader(file);
 			BufferedReader bf=new BufferedReader(fileReader);
-			String line=null;
-			System.out.println("Read logic");
-			/*line=bf.readLine();
-			System.out.println(line);*/
-			while((line=bf.readLine())!=null){
+		
+		
+		//	System.out.println("Read logic");
+		FlashCardObject obj=null;
+			try{
+			while((obj=(FlashCardObject) os.readObject())!=null){
+				cardList.add(obj);
 				
-			FlashCardObject fco=(FlashCardObject)os.readObject();
-			String s=fco.toString();
-		
-			System.out.println(s);
+				
+				
+				
+			}}catch(Exception e){
+				//e.printStackTrace();
 			}
-		
+			
+	
+				finally{
 			bf.close();
+				}
+			return cardList;
 			
-		}
-		catch(Exception e){
-			System.err.println("File not Found");
-			
-		}
+		
 	}
 	
 static void writeObject(ArrayList<FlashCardObject> cardList) {

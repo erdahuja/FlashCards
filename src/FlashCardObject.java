@@ -19,7 +19,7 @@ public void setAnswer(String answer) {
 	this.answer = answer;
 }
 
-public FlashCardObject(String question, String answer) {
+ FlashCardObject(String question, String answer) {
 	super();
 	this.question = question;
 	this.answer = answer;
